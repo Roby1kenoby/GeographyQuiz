@@ -154,18 +154,8 @@ function askQuestion(q){
 
 }
 
-//askUsername()
+askUsername()
 
 for (let i of questions){
     askQuestion(i)
 }
-
-
-/*
-    What is the capital of Italy?
-    1. Paris
-    2. London
-    3. Rome
-    4. Madrid
-
-*/
