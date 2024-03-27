@@ -121,30 +121,41 @@ const questions = [
   ];
 
 
-
+// function that asks for a username and check it's not blank or all spaces
 function askUsername(){
+    // variable to store the name of the user
     let name = ''
+    // !name means if the variable name is not null\empty.
+    // we use trim to remove extra spaces before and after the string.
+    // as a bonus, if a string is only composed by spaces, trim remove them and we have a null\empty string
     while(!name.trim()){
         name = prompt("Insert your username")
+        // same check as before. if the name is not valid, we say so.
         if (!name.trim()){
-            alert("You have to insert your username!")
+            alert("Username not valid. Insert a new one!")
         }
         else{
-            alert(`Hello ${name}!`)
+            // otherwise we greet the user
+            alert(`Nice to see you, ${name}!`)
         }
     }    
 }
 
+// function to ask a single question (stored in the array of questions). q is a single object of type question
 function askQuestion(q){
     alert(q.question)
-    let promptMessage = 'Choose the righe answer (input the corresponding number)!\n'
+    // we will use this variable to store the prompt. We start by adding to it the starting phrase
+    let promptMessage = 'Choose the right answer (input the corresponding number)!\n'
+    // then we cycle thorough the options of the question
     for (let i of q.options){
-        console.log('sono dentro al ciclo for delle opzioni, stampo l\'opzione i')
-        console.log(i)
+        // for each option, we create a string with the id and text of the option
         let stringaDaConcatenare = `${i.id}. ${i.text}\n`
+        // then we add it to the end of the initial string
         promptMessage += stringaDaConcatenare
     }
+    // finally, we use the string thus created as an input for the prompt
     let risposta = prompt(promptMessage)
+
     if(risposta === q.answer){
         alert("Risposta esatta")
     }
@@ -154,8 +165,10 @@ function askQuestion(q){
 
 }
 
+// calling the first function to ask for a username
 askUsername()
 
+// cycling through the questions array and calling the askQuestion function
 for (let i of questions){
     askQuestion(i)
 }
